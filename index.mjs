@@ -227,7 +227,11 @@ console.log("Q8: ", insertInArray(full));
 console.log("Q8: original array: ", full);
 
 // ---------- QUESTION 9 ----------
-// Write a function called 'compareArrays' that takes two Array parameters (containing numbers or strings only) and returns true if they are equal, false if not.  The purpose of this function should be to look at each element of the two arrays and compare them, returning false when they either hit two items that don't match, or returning false if the two arrays themselves are different lengths. You can test this with the 'empty' and 'full' variables from Question 6, and/or you can create a variable called 'compare' and assign it an array identical to 'full' to compare those.  To further test your function's accuracy, create a new variable called 'part' that is a partial copy of the 'full' variable and test that as well.
+// Write a function called 'compareArrays' that takes two Array parameters (containing numbers or strings only) and returns true if they are equal, false if not.  
+// The purpose of this function should be to look at each element of the two arrays and compare them, returning false when they either hit two items that don't 
+// match, or returning false if the two arrays themselves are different lengths. You can test this with the 'empty' and 'full' variables from Question 6, and/or you 
+// can create a variable called 'compare' and assign it an array identical to 'full' to compare those.  To further test your function's accuracy, create a new variable 
+// called 'part' that is a partial copy of the 'full' variable and test that as well.
 
 // REMEMBER: In JavaScript, 1 === '1' is false, but 1 == '1' is true. You'll need to use the triple equals operator which is more strict because it compares data type.
 
@@ -246,7 +250,23 @@ console.log("Q8: original array: ", full);
 // EXAMPLE OUTPUT: (if 'full' variable is ["dream", 19, "code", 24] and if 'part' variable is ["dream", 19, "code"])
 //    Q9 different: false
 
-// PUT YOUR CODE HERE
+function compareArrays(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+let part = [1, 2, 3]; // part of the full array
+
+console.log("Q9 different: ", compareArrays(full, empty));
+console.log("Q9 partial: ", compareArrays(full, part)); 
+
 
 // ---------- QUESTION 10 ----------
 // Create a variable called 'numbers' and assign it an array with at least 3 numbers as elements (example: [10, 3, 4]).  Write a function called 'calculateTotal' that takes one array parameter and loops through the array in order to return the sum of all the array elements.
@@ -258,7 +278,17 @@ console.log("Q8: original array: ", full);
 //    Q10: 17
 
 // PUT YOUR CODE HERE
+let numbers = [4, 8, 12]; 
 
+function calculateTotal(arr) {
+    let sum = 0;
+    for(let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+console.log("Q10: ", calculateTotal(numbers)); 
 // ---------- QUESTION 11 ----------
 // Write two functions called 'findEvens' and 'findOdds' that each take one array parameter and each returns a NEW Array of all the even or odd numbers as indicated.  NOTE: Assigning an array to a new variable does not make a copy, it's another reference to the same array.  To make a copy you can use the slice() method as in this example:
 // let newArray = originalArray.slice()
@@ -273,6 +303,31 @@ console.log("Q8: original array: ", full);
 
 // PUT YOUR CODE HERE
 
+let arr = [20, 21, 22, 23, 24, 25, 26, 27, 28, 30];
+
+function findEvens(arr) {
+    let newArray = [];
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] % 2 === 0) {
+            newArray.push(arr[i]); 
+        }
+    }
+    return newArray;
+}
+
+function findOdds(arr) {
+    let newArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 !== 0) {
+            newArray.push(arr[i]); 
+        }
+    }
+    return newArray; 
+}
+
+console.log("Q11: ", findEvens(arr));
+console.log("Q11: ", findOdds(arr));
+
 // ---------- QUESTION 12 ----------
 // Write a function called 'makeSquares' that takes one array parameter and returns a NEW Array with the squared values of each of the numbers.  NOTE: Assigning an array to a new variable does not make a copy, it's another reference to the same array.  To make a copy you can use the slice() method as in this example:
 // let newArray = originalArray.slice()
@@ -284,6 +339,13 @@ console.log("Q8: original array: ", full);
 //    Q12: [4,25,64]
 
 // PUT YOUR CODE HERE
+function makeSquares(arr) {
+    return arr.map(function(num) {
+        return num * num;
+    });
+}
+
+console.log("Q12: ", makeSquares([1, 2, 3]));
 
 // ---------- BONUS QUESTION / STRETCH GOAL ----------
 // Back in the old days, the early 2000s, this was a famous technical interview question. Write a function definition that takes NO parameters. The function will loop from 1 to 15 and return an array of numbers. While looping, the function will check if the current value in the loop is divisible by 3, by 5, or by both. If the current value in the loop is divisible by 3, the function will add the string "fizz" to an array. If the current value in the loop is divisible by 5, the function will add the string "buzz" to the array. If the current value in the loop is divisible by both, the function will add the value "fizzbuzz" to the array. If the number isn't divisible by 3, 5, OR both, it will add the number to the array.  The function will return the array of values.
