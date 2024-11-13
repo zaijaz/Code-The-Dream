@@ -38,6 +38,15 @@
 //    Q1 color: brown
 
 // PUT YOUR CODE HERE
+const myPet = {
+    name: "Moosh",
+    species: "Cat",
+    color: "brown"
+  };
+
+console.log("Q1 name: ", myPet.name);
+console.log("Q1 species: ", myPet.species);
+console.log("Q1 color: ", myPet.color);
 
 // ---------- QUESTION 2 ----------
 // Now let's see how we can use the property:value pairs in template literals.  Create a variable called 'aboutPet' and assign it a template literal that uses the 'myPet' object to make a sentence sharing all the pet details.  The sentence should look something like this: "Teddy is a brown ferret."
@@ -48,6 +57,8 @@
 //    Q2: Teddy is a brown ferret.
 
 // PUT YOUR CODE HERE
+let aboutPet = `${myPet.name} is a ${myPet.color} ${myPet.species}.`;
+console.log("Q2: ", aboutPet);
 
 // ---------- QUESTION 3 ----------
 // Let's add a method to our object.  Create a method called 'age' that takes no parameters, and uses no outside variables (hint: use 'this').  The method should return the age of the pet in years.
@@ -58,6 +69,11 @@
 //    Q3: 7
 
 // PUT YOUR CODE HERE
+myPet.age = function() {
+    return 7; 
+  };
+  
+  console.log("Q3: ", myPet.age());
 
 // ---------- QUESTION 4 ----------
 // Now, let's see how we can use data within objects in functions.  Write a function called 'isDog' that takes one object parameter.  In the function, create a variable called 'speciesChecker' and assign it the value 'dog'.  Then, still in the function, return true if the object's species value is equal to the variable 'speciesChecker', or false if not.
@@ -69,6 +85,12 @@
 // NOTE: if when you made 'myPet' in Question 1, you did put dog as species, you should get true as your output instead.
 
 // PUT YOUR CODE HERE
+function isDog(pet) {
+    let speciesChecker = "dog";
+    return pet.species === speciesChecker;
+  }
+  
+  console.log("Q4: ", isDog(myPet));
 
 // ---------- QUESTION 5 ----------
 // Time to start building on our knowledge!  Create a variable called 'library' and assign it an array of 3 objects.  Each object in the array should have three properties: 'title', 'author', and 'libraryID'.  You can use any three books/movies/etc. you like, and make up any library ID for each item as long as your ID numbers are 4 characters long.  An example object could look something like this:
@@ -92,8 +114,19 @@
 //    ]
 
 // PUT YOUR library object CODE HERE
+let library = [
+    { title: 'Braiding Sweet Grass', author: 'Umes Santilal', libraryID: 1234 },
+    { title: 'Disability Visibility', author: 'Alice Wong', libraryID: 5729 },
+    { title: 'Doppelganger: A Trip into the Mirror World', author: 'Naomi Klein', libraryID: 9826 }
+  ];
 
 // PUT YOUR function CODE HERE
+function sortArray(libraryArray) {
+
+    return libraryArray
+      .map(item => ({ ...item }))  
+      .sort((a, b) => a.libraryID - b.libraryID); 
+  }
 
 // ---------- QUESTION 6 ----------
 // Create a function called 'addTypeProperty' that takes one Array parameter and returns a NEW Array where each Object has a new property called 'type' with value 'book'.  Remember that assigning an array to a new variable does not make a copy.  Also, the objects inside a new copy of the library array are still the original objects, so make a copy of each object before adding the property.  The spread operator can be used to make a copy of an object. STRETCH GOAL: use the map() method to achieve this.
@@ -111,6 +144,11 @@
 //    ]
 
 // PUT YOUR CODE HERE
+function addTypeProperty(libraryArray) {
+    return libraryArray.map(item => ({ ...item, type: 'book' }));
+  }
+console.log("Q6: ", addTypeProperty(library));
+
 
 // ---------- QUESTION 7 ----------
 // Create a function called 'addNewObject' that takes one Array parameter and one Object parameter and returns a new Array with the new Object inserted at the end.  Remember that assigning an array to a new variable does not make a copy.  Also, the objects inside a new copy of the library array are still the original objects, so make a copy of each object before adding the property.  The spread operator can be used to make a copy of an object.
@@ -132,3 +170,10 @@
 //    ]
 
 // PUT YOUR CODE HERE
+function addNewObject(libraryArray, newObj) {
+
+    return [...libraryArray, { ...newObj}];
+  }
+  
+const newBook = { title: 'Clean Code', author: 'Robert C. Martin', libraryID: 6248 };
+console.log("Q7: ", addNewObject(library, newBook));
