@@ -41,7 +41,19 @@
 //   Bernice King
 
 // PUT YOUR CODE HERE
-console.log("Hello World");
+const names = ["Zara Aynoor", "Jimmy Smith", "Sukhdeep Kaur"];
+
+function printNames(names) {
+    console.log("Q1 printNames:"); 
+
+    function logName(name) {
+        console.log(name);
+    }
+
+    names.forEach(logName);
+}
+
+printNames(names);
 //---------- QUESTION 2 ----------
 // Create a variable called 'trees' and assign it an array of 3 objects.  Each object should have a 'type' property and a 'height' property.  You can use 'type' to describe the type of tree (ex. Dogwood, Maple, Oak, Elm, etc.) and give them any height.  Now write a function called 'logTreeType' that uses forEach to log the type of each tree object to the console.
 
@@ -60,7 +72,22 @@ console.log("Hello World");
 //   birch
 
 // PUT YOUR CODE HERE
+const trees = [
+    { type: "oak", height: "30m" },
+    { type: "elm", height: "25m" },
+    { type: "birch", height: "18m" } ];
 
+    function logTreeType(trees) {
+        console.log("Q2: logTreeType: ");
+
+        function logTree(tree) {
+            console.log(tree.type);
+        }
+
+        trees.forEach(logTree);
+    }
+
+    logTreeType(trees);
 //---------- QUESTION 3 ----------
 // Create a variable called 'myNumbers' and assign it an array of numbers.  Now write a function caled 'totalPoints' that uses forEach to add up all the numbers in that array of numbers.
 
